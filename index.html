@@ -26,16 +26,16 @@
     <input type="password" placeholder="password here" id="password">
     <input type="submit" value="Signup" id="signupBtn">
   </div>
-  <div class="spacer"><hr></div>
-  <div class="signinHeader">Chats Signup</div>
+  <div class="spacer1"><hr></div>
+  <div class="signinHeader">Chats Signin</div>
   <div class="signinContainer">
     <label>User Name:</label>
-    <input type="text" placeholder="user name here" id="username" />
+    <input type="text" placeholder="user name here" id="username_signin" />
     <label>Password:</label>
-    <input type="password" placeholder="password here" id="password">
+    <input type="password" placeholder="password here" id="password_signin">
     <input type="submit" value="Signin" id="signinBtn">
   </div>
-  <div class="spacer"><hr></div>
+  <div class="spacer2"><hr></div>
   <div class="chatsHeader">The Chats</div>
   <div class="chatsContainer">
     <ul class="chatsList"></ul>
@@ -50,7 +50,10 @@
         data: {username: $("#username").val(), password: $("#password").val()}
         
       }).success(function () {
-        console.log("success")
+        console.log("success");
+        $(".signupContainer").hide();
+        $(".signupHeader").hide();
+        $(".spacer1").hide();
       })
     })
   </script>
@@ -61,9 +64,15 @@
       $.ajax({
         type: 'POST',
         url: 'http://chat.api.mks.io/signin',
-        data: {username: $("#username").val(), password: $("#password").val()}
-        
+        data: {username: $("#username_signin").val(), password: $("#password_signin").val()}
       }).success(function (token) {
+        $(".signupContainer").hide();
+        $(".signupHeader").hide();
+        $(".spacer1").hide();
+        $(".signinContainer").hide();
+        $(".signinHeader").hide();
+        $(".spacer2").hide();
+        $(".appHeader").append("<p>Signed in as: " + $("#username_signin").val() + "</p>")
         console.log("success", token)
       })
     })
