@@ -1,8 +1,37 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <head>
-    <title>My jQuery Page</title>
-    <script src="jquery-2.1.1.js"></script>
+    <title>Chatitude</title>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/css/foundation.css">
+    <style type="text/css">
+      div {
+        width: 50%;
+        margin: auto;
+      }
+      ul {
+        list-style-type: none;
+      }
+    </style>
+    <script type="text/javascript" src="jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="handlebars-v2.0.0.js"></script>
 </head>
 <body>
+  <div class="appHeader"><h2>Chatitude</h2></div>
+  <div class="chatsHeader">The Chats</div>
+  <div class="chatsContainer">
+    <ul class="chatsList"></ul>
+  </div>
+  <script id="chats-template" type="text/x-handlebars-template">
+    {{#each this}}
+      <li class="chats">{{user}} -- Message: {{message}}</li>
+    {{/each}}
+  </script>
+  <script type="text/javascript">
+    $.ajax({
+      type: 'GET',
+      url: 'http://chat.api.mks.io/chats'
+    }).success(function (chats) {
+      console.log("Got chats:", chats)
+    })
+  </script>
 </body>
