@@ -21,18 +21,18 @@
   <div class="signupHeader">Chats Signup</div>
   <div class="signupContainer">
     <label>User Name:</label>
-    <input type="text" placeholder="user name here" id="username" />
+    <input type="text" placeholder="user name here" id="usernameSignup" />
     <label>Password:</label>
-    <input type="password" placeholder="password here" id="password">
-    <input type="submit" value="Signup" id="signupBtn">
+    <input type="password" placeholder="password here" id="passwordSignup">
+    <input type="button" value="Signup" id="signupBtn">
   </div>
   <div class="spacer"><hr></div>
   <div class="signinHeader">Chats Signup</div>
   <div class="signinContainer">
     <label>User Name:</label>
-    <input type="text" placeholder="user name here" id="username" />
+    <input type="text" placeholder="user name here" id="usernameSignin" />
     <label>Password:</label>
-    <input type="password" placeholder="password here" id="password">
+    <input type="password" placeholder="password here" id="passwordSignin">
     <input type="submit" value="Signin" id="signinBtn">
   </div>
   <div class="spacer"><hr></div>
@@ -47,7 +47,7 @@
       $.ajax({
         type: 'POST',
         url: 'http://chat.api.mks.io/signup',
-        data: {username: $("#username").val(), password: $("#password").val()}
+        data: {username: $("#usernameSignup").val(), password: $("#passwordSignup").val()}
         
       }).success(function () {
         console.log("success")
@@ -61,7 +61,7 @@
       $.ajax({
         type: 'POST',
         url: 'http://chat.api.mks.io/signin',
-        data: {username: $("#username").val(), password: $("#password").val()}
+        data: {username: $("#usernameSignin").val(), password: $("#passwordSignin").val()}
         
       }).success(function (token) {
         console.log("success", token)
