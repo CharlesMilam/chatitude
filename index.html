@@ -18,29 +18,35 @@
 </head>
 <body>
   <div class="appHeader"><h2>Chatitude</h2></div>
-  <div class="signupHeader">Chats Signup</div>
   <div class="signupContainer">
-    <label>User Name:</label>
-    <input type="text" placeholder="user name here" id="usernameSignup" />
-    <label>Password:</label>
-    <input type="password" placeholder="password here" id="passwordSignup">
-    <input type="button" value="Signup" id="signupBtn">
+    <div class="signupHeader">Chats Signup</div>
+    <div class="signupForm">
+      <label>User Name:</label>
+      <input type="text" placeholder="user name here" id="usernameSignup" />
+      <label>Password:</label>
+      <input type="password" placeholder="password here" id="passwordSignup">
+      <input type="button" value="Signup" id="signupBtn">
+    </div>
   </div>
   <div class="spacer"><hr></div>
-  <div class="signinHeader">Chats Signup</div>
   <div class="signinContainer">
-    <label>User Name:</label>
-    <input type="text" placeholder="user name here" id="usernameSignin" />
-    <label>Password:</label>
-    <input type="password" placeholder="password here" id="passwordSignin">
-    <input type="submit" value="Signin" id="signinBtn">
+    <div class="signinHeader">Chats Signup</div>
+    <div class="signinForm">
+      <label>User Name:</label>
+      <input type="text" placeholder="user name here" id="usernameSignin" />
+      <label>Password:</label>
+      <input type="password" placeholder="password here" id="passwordSignin">
+      <input type="submit" value="Signin" id="signinBtn">
+    </div>
   </div>
   <div class="spacer"><hr></div>
-  <div class="chatsHeader">The Chats</div>
   <div class="chatsContainer">
-    <ul class="chatsList"></ul>
+    <div class="chatsHeader">The Chats</div>
+      <div class="chats">
+        <ul class="chatsList"></ul>
+      </div>
+    </div>
   </div>
-
   <script>
     $("#signupBtn").click(function() {
       console.log("in click")
