@@ -75,6 +75,8 @@
         
       }).success(function (token) {
         console.log("success", token)
+        sessionStorage.setItem("apiToken", token["apiToken"])
+        console.log("get token", sessionStorage.getItem("apiToken"))
       })
     })
   </script>
