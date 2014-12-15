@@ -44,6 +44,17 @@
     </div>
   </div>
   <div class="spacer"><hr></div>
+  <div class="messageContainer">
+    <div class="messageHeader">New Chats</div>
+    <div class="messageForm">
+      <label>User Name:</label>
+      <input type="text" placeholder="user name here" id="usernameMessage" />
+      <label>Message:</label>
+      <input type="text" placeholder="message here" id="message">
+      <input type="button" value="Chat it" id="messageBtn">
+    </div>
+  </div>
+  <div class="spacer"><hr></div>
   <div class="chatsContainer">
     <div class="chatsHeader">The Chats</div>
       <div class="chats">
@@ -77,6 +88,20 @@
         console.log("success", token)
         sessionStorage.setItem("apiToken", token["apiToken"])
         console.log("get token", sessionStorage.getItem("apiToken"))
+      })
+    })
+  </script>
+
+  <script>
+    $("#messageBtn").click(function() {
+      console.log("in click")
+      $.ajax({
+        type: 'POST',
+        url: 'http://chat.api.mks.io/chats',
+        data: {username: $("#usernameMessage").val(), message: $("#message").val(), apiToken: sessionStorage.getItem("apiToken")}
+        
+      }).success(function (token) {
+        console.log("success")
       })
     })
   </script>
