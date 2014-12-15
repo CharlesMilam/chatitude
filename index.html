@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>Chatitude</title>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/css/foundation.css">
@@ -13,32 +14,65 @@
     </style>
     <script type="text/javascript" src="jquery-2.1.1.js"></script>
     <script type="text/javascript" src="handlebars-v2.0.0.js"></script>
+    <script type="text/javascript" src="getChats.js"></script>
 </head>
 <body>
   <div class="appHeader"><h2>Chatitude</h2></div>
+  <div class="signupHeader">Chats Signup</div>
+  <div class="signupContainer">
+    <label>User Name:</label>
+    <input type="text" placeholder="user name here" id="username" />
+    <label>Password:</label>
+    <input type="password" placeholder="password here" id="password">
+    <input type="submit" value="Signup" id="signupBtn">
+  </div>
+  <div class="spacer"><hr></div>
+  <div class="signinHeader">Chats Signup</div>
+  <div class="signinContainer">
+    <label>User Name:</label>
+    <input type="text" placeholder="user name here" id="username" />
+    <label>Password:</label>
+    <input type="password" placeholder="password here" id="password">
+    <input type="submit" value="Signin" id="signinBtn">
+  </div>
+  <div class="spacer"><hr></div>
   <div class="chatsHeader">The Chats</div>
   <div class="chatsContainer">
     <ul class="chatsList"></ul>
   </div>
+
+  <script>
+    $("#signupBtn").click(function() {
+      console.log("in click")
+      $.ajax({
+        type: 'POST',
+        url: 'http://chat.api.mks.io/signup',
+        data: {username: $("#username").val(), password: $("#password").val()}
+        
+      }).success(function () {
+        console.log("success")
+      })
+    })
+  </script>
+
+  <script>
+    $("#signinBtn").click(function() {
+      console.log("in click")
+      $.ajax({
+        type: 'POST',
+        url: 'http://chat.api.mks.io/signin',
+        data: {username: $("#username").val(), password: $("#password").val()}
+        
+      }).success(function (token) {
+        console.log("success", token)
+      })
+    })
+  </script>
+
   <script id="chats-template" type="text/x-handlebars-template">
     {{#each this}}
       <li class="chats">{{user}} -- Message: {{message}}</li>
     {{/each}}
   </script>
-  
-  <script type="text/javascript">
-    $.ajax({
-      type: 'GET',
-      url: 'http://chat.api.mks.io/chats'
-    }).success(function (chats) {
-      console.log("Got chats:", chats)
-      chatsData = chats;
-      var source = $('#chats-template').html();
-      var chatsTemplate = Handlebars.compile(source);
-
-      $('.chatsList').append(chatsTemplate(chatsData));
-    })
-  </script>
-
-  
 </body>
+</html>
