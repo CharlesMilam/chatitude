@@ -25,12 +25,20 @@
       <li class="chats">{{user}} -- Message: {{message}}</li>
     {{/each}}
   </script>
+  
   <script type="text/javascript">
     $.ajax({
       type: 'GET',
       url: 'http://chat.api.mks.io/chats'
     }).success(function (chats) {
       console.log("Got chats:", chats)
+      chatsData = chats;
+      var source = $('#chats-template').html();
+      var chatsTemplate = Handlebars.compile(source);
+
+      $('.chatsList').append(chatsTemplate(chatsData));
     })
   </script>
+
+  
 </body>
