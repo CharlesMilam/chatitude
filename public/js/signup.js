@@ -13,6 +13,7 @@ function ajaxSignup () {
       // inform user of successful signup, hide and clear inputs.
       alert($("#usernameSignup").val() + " successfully signed up.");
       $(".signupContainer").hide();
+      $(".spacerSignup").hide();
       $("#usernameSignup").val('');
       $("#passwordSignup").val('');
     })
