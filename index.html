@@ -40,6 +40,10 @@
   <div class="chatsContainer">
     <ul class="chatsList"></ul>
   </div>
+  <div class="addMessage">
+    <textarea id="newMessage">New Message</textarea>
+    <input type="submit" value="Post" id="postMessage">
+  </div>
 
   <script>
     $("#signupBtn").click(function() {
@@ -74,6 +78,18 @@
         $(".spacer2").hide();
         $(".appHeader").append("<p>Signed in as: " + $("#username_signin").val() + "</p>")
         console.log("success", token)
+        sessionStorage.setItem("apiToken", token['apiToken']);
+        console.log(sessionStorage.getItem("apiToken"));
+      })
+    })
+  </script>
+
+  <script>
+    $("#postMessage").click(function() {
+      $.ajax({
+        type:'POST',
+        url: 'http://chat.api.mks.io/chats',
+        data: {apiToken: sessionStorage.getItem("apiToken"), message: $("#newMessage").val()}
       })
     })
   </script>
