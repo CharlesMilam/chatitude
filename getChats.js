@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    setInterval("ajaxget()", 15000);
+    setInterval("ajaxget()", 7000);
 });
 
 function ajaxget() {
@@ -7,15 +7,13 @@ function ajaxget() {
       type: 'GET',
       url: 'http://chat.api.mks.io/chats'
     }).success(function (chats) {
-      console.log("Got chats:", chats)
       chatsData = chats;
       var source = $('#chats-template').html();
       var chatsTemplate = Handlebars.compile(source);
 
       $('.chatsList').children().remove();
       $('.chatsList').append(chatsTemplate(chatsData));
-    })
-
-}
+    });
+};
 
 ajaxget(); 
