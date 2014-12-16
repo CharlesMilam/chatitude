@@ -15,7 +15,6 @@ function ajaxSignup () {
       $(".signupContainer").hide();
       $("#usernameSignup").val('');
       $("#passwordSignup").val('');
-
     })
   })
 };
