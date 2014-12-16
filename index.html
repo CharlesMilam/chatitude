@@ -31,7 +31,7 @@
       <input type="button" value="Signup" id="signupBtn">
     </div>
   </div>
-  <div class="spacer"><hr></div>
+  <div class="spacerSignup"><hr></div>
   <div class="signinContainer">
     <div class="signinHeader">Chats Signin</div>
     <div class="signinForm">
@@ -42,7 +42,7 @@
       <input type="button" value="Signin" id="signinBtn">
     </div>
   </div>
-  <div class="spacer"><hr></div>
+  <div class="spacerSignin"><hr></div>
   <div class="messageContainer">
     <div class="messageHeader">New Chats</div>
     <div class="messageForm">
@@ -53,7 +53,7 @@
       <input type="button" value="Chat it" id="messageBtn">
     </div>
   </div>
-  <div class="spacer"><hr></div>
+  <div class="spacerMessage"><hr></div>
   <div class="chatsContainer">
     <div class="chatsHeader">The Chats</div>
       <div class="chats">
@@ -62,20 +62,6 @@
     </div>
   </div>
   
-
-  <script>
-    $("#messageBtn").click(function() {
-      console.log("in click")
-      $.ajax({
-        type: 'POST',
-        url: 'http://chat.api.mks.io/chats',
-        data: {username: $("#usernameMessage").val(), message: $("#message").val(), apiToken: sessionStorage.getItem("apiToken")}
-        
-      }).success(function (token) {
-        console.log("success")
-      })
-    })
-  </script>
 
   <script id="chats-template" type="text/x-handlebars-template">
     {{#each this}}
@@ -86,5 +72,6 @@
   <script type="text/javascript" src="public/js/getChats.js"></script>
   <script type="text/javascript" src="public/js/signup.js"></script>
   <script type="text/javascript" src="public/js/signin.js" ></script>
+  <script type="text/javascript" src="public/js/message.js"></script>
 </body>
 </html>
