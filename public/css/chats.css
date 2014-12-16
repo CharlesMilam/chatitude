@@ -1,0 +1,11 @@
+div {
+  width: 50%;
+  margin: auto;
+}
+ul {
+  list-style-type: none;
+}
+.chatsContainer {
+  width: 100%;
+  margin: auto;
+}
