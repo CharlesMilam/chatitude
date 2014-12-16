@@ -24,7 +24,8 @@ module ChatitudeServer
       create table if not exists users(
         id serial primary key,
         name varchar,
-        password varchar
+        password varchar,
+        token varchar
       );
       create table if not exists messages(
         id serial primary key,
@@ -59,6 +60,7 @@ module ChatitudeServer
   
 end
 
-db = ChatitudeServer.create_db_connection("chatitude")
-ChatitudeServer.create_tables(db)
-ChatitudeServer.seed_db(db)
+# db = ChatitudeServer.create_db_connection("chatitude")
+# ChatitudeServer.drop_tables(db)
+# ChatitudeServer.create_tables(db)
+# ChatitudeServer.seed_db(db)
