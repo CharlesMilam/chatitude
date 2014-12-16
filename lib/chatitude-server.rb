@@ -1,7 +1,7 @@
 require "pg"
 
-require_relative "chatitude_server/lib/repos/messages-repo.rb"
-require_relative "chatitude_server/lib/repos/users-repo.rb"
+require_relative "repos/messages-repo.rb"
+require_relative "repos/users-repo.rb"
 
 module ChatitudeServer
   # create db connection
@@ -21,20 +21,21 @@ module ChatitudeServer
   # create neeeded tables
   def self.create_tables(db)
     sql = %Q[
-      create table if not exist users(
+      create table if not exists users(
         id serial primary key,
         name varchar,
-        password varchar,
+        password varchar
       );
-      create table if not exist messages(
+      create table if not exists messages(
         id serial primary key,
-        user_id references users(id)
+        user_id int references users(id)
         on delete cascade
         on update cascade,
         message varchar,
         time_stamp timestamptz
-      )
+      );
     ]
+    db.exec(sql)
   end
 
   # seed the database
@@ -44,7 +45,7 @@ module ChatitudeServer
     (name, password)
     values ('nascimeiento', '123');
     ]  
-    db.exec(db)
+    db.exec(sql)
   end
 
   # drop all database tables
@@ -57,3 +58,7 @@ module ChatitudeServer
   end
   
 end
+
+db = ChatitudeServer.create_db_connection("chatitude")
+ChatitudeServer.create_tables(db)
+ChatitudeServer.seed_db(db)
