@@ -10,6 +10,12 @@ function ajaxSignup () {
       }
     }).success(function () {
       console.log("signup success")
+      // inform user of successful signup, hide and clear inputs.
+      alert($("#usernameSignup").val() + " successfully signed up.");
+      $(".signupContainer").hide();
+      $("#usernameSignup").val('');
+      $("#passwordSignup").val('');
+
     })
   })
 };
