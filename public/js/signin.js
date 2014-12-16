@@ -15,6 +15,7 @@ function ajaxSignin() {
       // inform user of successful signup, hide and clear inputs.
       alert($("#usernameSignin").val() + " successfully signed in.");
       $(".signinContainer").hide();
+      $(".spacerSignin").hide();
       $("#usernameSignin").val('');
       $("#passwordSignin").val('');
     })
