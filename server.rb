@@ -31,6 +31,7 @@ require_relative "lib/repos/users-repo.rb"
     puts "sginup", user, password, token
     #db = ChatitudeServer.create_db_connection("chatitude")
     #ChatitudeServer::UsersRepo.save_new_user db, {name: user, password: password}  
+    token
   end
 
 #end
