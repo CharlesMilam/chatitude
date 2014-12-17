@@ -24,4 +24,13 @@ require_relative "lib/repos/users-repo.rb"
     ChatitudeServer::UsersRepo.save_new_user db, {name: user, password: password} 
   end
 
+  post "/signin" do
+    user = params[:username]
+    password = params[:password]
+    token = SecureRandom.base64
+    puts "sginup", user, password, token
+    #db = ChatitudeServer.create_db_connection("chatitude")
+    #ChatitudeServer::UsersRepo.save_new_user db, {name: user, password: password}  
+  end
+
 #end
