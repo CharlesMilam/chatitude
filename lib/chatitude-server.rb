@@ -60,7 +60,11 @@ module ChatitudeServer
   
 end
 
-# db = ChatitudeServer.create_db_connection("chatitude")
+db = ChatitudeServer.create_db_connection("chatitude")
 # ChatitudeServer.drop_tables(db)
 # ChatitudeServer.create_tables(db)
 # ChatitudeServer.seed_db(db)
+
+#ChatitudeServer::UsersRepo.save_new_user db, {name: "test1", password: "123"}
+# result = ChatitudeServer::UsersRepo.login_user db, {name: "test", password: "123"}
+# puts result

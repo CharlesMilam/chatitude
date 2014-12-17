@@ -9,10 +9,12 @@ module ChatitudeServer
 
     def self.login_user(db, userinfo)
       # create api token
-      sql = %q[UPDATE users SET token = $1 WHERE name = $1 AND password = $2]
+      sql = %q[select * from users WHERE name = $1 AND password = $2]
       result  = db.exec(sql, [userinfo[:name], userinfo[:password]])
+      
       result.entries
     end
 
   end
 end
+

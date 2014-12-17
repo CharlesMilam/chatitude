@@ -5,7 +5,7 @@ $(document).ready(function() {
 function ajaxget() {
   $.ajax({
       type: 'GET',
-      url: 'http://chat.api.mks.io/chats'
+      url: ''
     }).success(function (chats) {
       chatsData = chats;
       var source = $('#chats-template').html();

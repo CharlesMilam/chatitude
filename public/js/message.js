@@ -3,7 +3,7 @@ function ajaxMessage(){
     console.log("in click")
     $.ajax({
       type: 'POST',
-      url: 'http://chat.api.mks.io/chats',
+      url: '',
       data: {
         username: $("#usernameMessage").val(),
         message: $("#message").val(), 

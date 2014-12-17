@@ -3,7 +3,7 @@ function ajaxSignin() {
     console.log("in click")
     $.ajax({
       type: 'POST',
-      url: 'http://chat.api.mks.io/signin',
+      url: '',
       data: {
       username: $("#usernameSignin").val(),
       password: $("#passwordSignin").val()
