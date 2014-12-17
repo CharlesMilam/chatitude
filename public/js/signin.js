@@ -1,15 +1,13 @@
 function ajaxSignin() {
   $("#signinBtn").click(function() {
     console.log("in click")
-    $.ajax({
-      type: 'POST',
-      url: '',
-      data: {
+    $.post(
+      "/signin",
+      {
       username: $("#usernameSignin").val(),
       password: $("#passwordSignin").val()
       }
-      
-    }).success(function (token) {
+    ).success(function (token) {
       console.log("signin success", token)
       sessionStorage.setItem("apiToken", token["apiToken"])
       // inform user of successful signup, hide and clear inputs.
